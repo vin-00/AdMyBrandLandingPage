@@ -9,6 +9,8 @@
 
   <h1 align="center">ADmyBRAND</h1>
   <h3 align="center">AI-Powered Omni-Channel Advertising Platform</h3>
+  <img width="1898" height="875" alt="image" src="https://github.com/user-attachments/assets/5e712be1-4a7d-4104-93c5-9320da420ca2" />
+
 </div>
 
 ## 📋 Table of Contents
