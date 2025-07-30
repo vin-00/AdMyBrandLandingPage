@@ -12,8 +12,7 @@ const TestimonialItem = ({ item, containerClassName }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Glassmorphism effect */}
-      <div className="absolute inset-0 bg-s2/5 backdrop-blur-sm z-1 rounded-3xl" />
+
       <blockquote className="body-1 mb-4 text-p4 line-clamp-3">{item.comment}</blockquote>
 
       <div className="flex items-center max-xl:-mr-8">
