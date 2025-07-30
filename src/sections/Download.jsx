@@ -63,6 +63,10 @@ const Download = () => {
                     height={655}
                     alt="screen"
                     className="rounded-xl"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                   />
                 </div>
               </div>
