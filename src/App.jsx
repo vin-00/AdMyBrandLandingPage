@@ -5,6 +5,7 @@ import Pricing from "./sections/Pricing.jsx";
 import Faq from "./sections/Faq.jsx";
 import Testimonials from "./sections/Testimonials.jsx";
 import Download from "./sections/Download.jsx";
+import Contact from "./sections/Contact.jsx";
 import Footer from "./sections/Footer.jsx";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
       <Faq />
       <Testimonials />
       <Download />
+      <Contact />
       <Footer />
     </main>
   );

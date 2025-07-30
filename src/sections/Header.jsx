@@ -1,10 +1,14 @@
 import { Link as LinkScroll } from "react-scroll";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 100], [0, 1]);
+  const blur = useTransform(scrollY, [0, 100], [0, 8]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,9 +40,18 @@ const Header = () => {
     <header
       className={clsx(
         "fixed top-0 left-0 z-50 w-full py-10 transition-all duration-500 max-lg:py-4",
-        hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]",
+        hasScrolled && "py-2",
       )}
     >
+      <motion.div 
+        className="absolute inset-0 bg-s1/70 z-[-1]"
+        style={{ 
+          opacity, 
+          backdropFilter: `blur(${blur.get()}px)`,
+          WebkitBackdropFilter: `blur(${blur.get()}px)`,
+          borderBottom: hasScrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
+        }}
+      />
       <div className="container flex h-14 items-center max-lg:px-5">
         <a className="lg:hidden flex-1 cursor-pointer z-2">
             <img src="/images/xora.svg" width={115} height={55} alt="ADmyBRAND" />

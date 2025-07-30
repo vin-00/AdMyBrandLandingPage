@@ -2,8 +2,10 @@ import { Element } from "react-scroll";
 import { useState } from "react";
 import clsx from "clsx";
 import CountUp from "react-countup";
+import { motion } from "framer-motion";
 import { plans } from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
+import PricingCalculator from "../components/PricingCalculator.jsx";
 
 const Pricing = () => {
   const [monthly, setMonthly] = useState(false);
@@ -58,12 +60,18 @@ const Pricing = () => {
           </div>
 
           {/*  pricing section*/}
-          <div className="scroll-hide relative z-2 -mt-12 flex items-start max-xl:gap-5 max-xl:overflow-auto max-xl:pt-6">
+          <div className="scroll-hide relative z-2 -mt-12 flex items-start max-xl:gap-5 max-xl:overflow-auto max-xl:pt-6 mb-16">
             {plans.map((plan, index) => (
-              <div
+              <motion.div
                 key={plan.id}
                 className="pricing-plan_first pricing-plan_last pricing-plan_odd pricing-plan_even relative border-2 p-7 max-xl:min-w-80 max-lg:rounded-3xl xl:w-[calc(33.33%+2px)]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
               >
+                {/* Glassmorphism effect */}
+                <div className="absolute inset-0 bg-s2/5 backdrop-blur-sm z-1 rounded-3xl" />
                 {index === 1 && (
                   <div className="g4 absolute h-330 left-0 right-0 top-0 z-1 rounded-tl-3xl rounded-tr-3xl" />
                 )}
@@ -155,8 +163,21 @@ const Pricing = () => {
                     Limited time offer
                   </p>
                 )}
-              </div>
+              </motion.div>
             ))}
+          </div>
+          
+          {/* Pricing Calculator */}
+          <div className="max-w-960 mx-auto px-5 pb-20">
+            <motion.h4 
+              className="h4 text-center text-p4 mb-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              Calculate Your Custom Plan
+            </motion.h4>
+            <PricingCalculator isMonthly={monthly} />
           </div>
         </div>
       </Element>
