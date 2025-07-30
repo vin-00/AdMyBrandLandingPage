@@ -70,8 +70,7 @@ const Pricing = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                {/* Glassmorphism effect */}
-                <div className="absolute inset-0 bg-s2/5 backdrop-blur-sm z-1 rounded-3xl" />
+
                 {index === 1 && (
                   <div className="g4 absolute h-330 left-0 right-0 top-0 z-1 rounded-tl-3xl rounded-tr-3xl" />
                 )}
@@ -114,7 +113,7 @@ const Pricing = () => {
                         index === 1 ? "text-p3" : "text-p4",
                       )}
                     >
-                      ${" "}
+                      ₹{" "}
                       <CountUp
                         start={plan.priceMonthly}
                         end={monthly ? plan.priceMonthly : plan.priceYearly}

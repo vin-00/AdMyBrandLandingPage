@@ -29,12 +29,13 @@ const PricingCalculator = ({ isMonthly }) => {
 
   return (
     <motion.div 
-      className="mt-12 p-8 rounded-3xl border-2 border-s4/25 bg-s2/5 backdrop-blur-sm relative overflow-hidden"
+      className="mt-12 p-8 rounded-3xl border-2 border-s4/25 bg-s1 relative overflow-hidden shadow-lg"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h4 className="h5 text-p3 mb-6 text-center">Customize Your Plan</h4>
+      <div className="absolute top-0 left-0 w-full h-1 g4"></div>
+      <h4 className="h4 text-p3 mb-8 text-center font-bold">Customize Your Plan</h4>
       
       <div className="space-y-8">
         <div>
@@ -48,7 +49,7 @@ const PricingCalculator = ({ isMonthly }) => {
             max="15" 
             value={channels} 
             onChange={(e) => setChannels(parseInt(e.target.value))}
-            className="w-full h-2 bg-s4/25 rounded-lg appearance-none cursor-pointer"
+            className="w-full h-3 bg-s4/25 rounded-lg appearance-none cursor-pointer accent-p3"
           />
           <div className="flex justify-between mt-1 small-compact text-s3">
             <span>3</span>
@@ -67,7 +68,7 @@ const PricingCalculator = ({ isMonthly }) => {
             max="30" 
             value={campaigns} 
             onChange={(e) => setCampaigns(parseInt(e.target.value))}
-            className="w-full h-2 bg-s4/25 rounded-lg appearance-none cursor-pointer"
+            className="w-full h-3 bg-s4/25 rounded-lg appearance-none cursor-pointer accent-p3"
           />
           <div className="flex justify-between mt-1 small-compact text-s3">
             <span>5</span>
@@ -79,21 +80,21 @@ const PricingCalculator = ({ isMonthly }) => {
           <label className="base-bold text-p4 block mb-3">Support Level</label>
           <div className="grid grid-cols-3 gap-3">
             <button 
-              className={`p-3 rounded-xl border-2 transition-all ${support === 'email' ? 'border-p3 bg-s4/20' : 'border-s4/25'}`}
+              className={`p-4 rounded-xl border-2 transition-all ${support === 'email' ? 'border-p3 bg-p3/10' : 'border-s4/25 hover:border-p3/50'}`}
               onClick={() => setSupport('email')}
             >
               <p className="base-bold text-center">Email</p>
               <p className="small-compact text-center text-s3">Basic</p>
             </button>
             <button 
-              className={`p-3 rounded-xl border-2 transition-all ${support === 'priority' ? 'border-p3 bg-s4/20' : 'border-s4/25'}`}
+              className={`p-4 rounded-xl border-2 transition-all ${support === 'priority' ? 'border-p3 bg-p3/10' : 'border-s4/25 hover:border-p3/50'}`}
               onClick={() => setSupport('priority')}
             >
               <p className="base-bold text-center">Priority</p>
               <p className="small-compact text-center text-s3">Faster</p>
             </button>
             <button 
-              className={`p-3 rounded-xl border-2 transition-all ${support === 'dedicated' ? 'border-p3 bg-s4/20' : 'border-s4/25'}`}
+              className={`p-4 rounded-xl border-2 transition-all ${support === 'dedicated' ? 'border-p3 bg-p3/10' : 'border-s4/25 hover:border-p3/50'}`}
               onClick={() => setSupport('dedicated')}
             >
               <p className="base-bold text-center">Dedicated</p>
@@ -103,19 +104,19 @@ const PricingCalculator = ({ isMonthly }) => {
         </div>
       </div>
       
-      <div className="mt-10 p-6 rounded-2xl bg-s4/10 flex justify-between items-center">
+      <div className="mt-10 p-6 rounded-2xl bg-p3/10 flex justify-between items-center shadow-inner">
         <div>
           <p className="base-bold text-p4">Estimated Price</p>
           <p className="small-compact text-s3">{isMonthly ? 'Monthly' : 'Annual (per month)'}</p>
         </div>
         <div className="flex items-baseline">
-          <span className="h4 text-p3">${totalPrice}</span>
+          <span className="h3 text-p3 font-bold">₹{totalPrice}</span>
           <span className="small-1 ml-1">/mo</span>
         </div>
       </div>
       
       <motion.button
-        className="g4 w-full py-4 mt-6 rounded-xl text-p1 base-bold uppercase transition-all hover:shadow-lg"
+        className="g4 w-full py-5 mt-8 rounded-xl text-p1 base-bold uppercase transition-all hover:shadow-xl shadow-lg"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
